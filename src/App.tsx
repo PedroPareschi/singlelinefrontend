@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import '@xyflow/react/dist/style.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Flow from "./components/Flow.tsx";
+import Input from "./components/Input.tsx";
+import { DiagramProvider } from "./context/DiagramContext.tsx";
+import { ReactFlowProvider } from 'reactflow';
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <div className="container-fluid">
+            <DiagramProvider>
+                <ReactFlowProvider>
+                    <header>
+                        <h3>Diagrama Unifiliar</h3>
+                        <div className="w-100 bg-light" style={{ height: 150 }}>
+                            <Input />
+                        </div>
+                    </header>
+                    <main>
+                        <div className="w-100 bg-body-tertiary" style={{ height: 500 }}>
+                            <Flow />
+                        </div>
+                    </main>
+                </ReactFlowProvider>
+            </DiagramProvider>
+        </div>
+    );
 }
 
-export default App
+export default App;
