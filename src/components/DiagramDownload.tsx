@@ -1,5 +1,5 @@
 import axios from "axios";
-import {Edge} from "reactflow";
+import {Node, Edge} from '@xyflow/react';
 
 const DiagramDownload = ({nodes, edges}: { nodes: Node[], edges: Edge[] }) => {
     const data = {nodes, edges};
@@ -28,7 +28,7 @@ const DiagramDownload = ({nodes, edges}: { nodes: Node[], edges: Edge[] }) => {
     }
 
     return (
-        <button className="btn btn-outline-secondary" hidden={!nodes || !edges}
+        <button className="btn btn-outline-secondary" hidden={nodes.length === 0 || edges.length === 0}
                 onClick={handleDownload} type="button"
                 id="inputGroupFileAddon04">
             Baixar
