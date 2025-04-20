@@ -7,8 +7,9 @@ import {Edge} from "reactflow";
 import {useDiagramContext} from "../context/diagram/DiagramContext.tsx";
 import {getColorBaseKv} from "../utils/getColorBaseKv.ts";
 import '@xyflow/react/dist/style.css';
+import DiagramDownload from "./DiagramDownload.tsx";
 
-const Flow = () => {
+const DiagramFlow = () => {
     const {diagramData} = useDiagramContext();
 
     const [nodes, setNodes] = useState<Node[]>([]);
@@ -45,7 +46,9 @@ const Flow = () => {
 
     }, [diagramData, setNodes, setEdges]);
 
-    return <ReactFlow nodes={nodes} edges={edges} fitView/>;
+    return (<>
+        <ReactFlow nodes={nodes} edges={edges} fitView/>
+        <DiagramDownload nodes={nodes} edges={edges}/>
+    </>);
 };
-
-export default Flow;
+export default DiagramFlow;
