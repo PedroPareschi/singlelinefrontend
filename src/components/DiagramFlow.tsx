@@ -1,9 +1,5 @@
 import {useEffect, useState} from 'react';
-import {
-    ReactFlow,
-    Node,
-} from '@xyflow/react';
-import {Edge} from "reactflow";
+import {ReactFlow, Node, Edge} from '@xyflow/react';
 import {useDiagramContext} from "../context/diagram/DiagramContext.tsx";
 import {getColorBaseKv} from "../utils/getColorBaseKv.ts";
 import '@xyflow/react/dist/style.css';
