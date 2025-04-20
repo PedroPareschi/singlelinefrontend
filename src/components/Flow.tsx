@@ -23,7 +23,10 @@ const Flow = () => {
                 data: {label: comp.data.title},
                 position: comp.position,
                 type: comp.type,
-                style: {background: comp.data.kv != null ? getColorBaseKv(comp.data.kv) : 'white'},
+                style: {
+                    background: getColorBaseKv(comp.data.kv || 0),
+                    height: comp.data.kv != null ? comp.data.kv : 50,
+                },
             }));
         console.log(newNodes);
         setNodes(newNodes);
