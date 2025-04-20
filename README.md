@@ -1,8 +1,10 @@
 # Diagrama Unifiliar - Frontend
 
-Para rodar o projeto:
+Requisitos:
+* Node.js (v10.9.2^)
+* Backend (https://github.com/PedroPareschi/singlelinebackend)
 
-Tenha o backend do projeto rodando. (https://github.com/PedroPareschi/singlelinebackend)
+Para rodar o projeto:
 
 * npm install
 * npm start
