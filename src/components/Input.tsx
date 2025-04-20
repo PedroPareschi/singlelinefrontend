@@ -1,6 +1,6 @@
 import {useState} from "react";
-import {useDiagramContext} from "../context/DiagramContext.tsx";
 import axios from "axios";
+import {useDiagramContext} from "../context/diagram/DiagramContext.tsx";
 
 const Input = () => {
     const [file, setFile] = useState<File|null>(null);
@@ -35,14 +35,14 @@ const Input = () => {
             <div className="input-group">
                 <input
                     type="file"
-                    className="Input-control"
-                    id="inputGroupFile"
-                    aria-describedby="inputGroupFileAddon"
+                    className="form-control"
+                    id="inputGroupFile04"
+                    aria-describedby="inputGroupFileAddon04"
                     aria-label="Upload"
                     onChange={handleFileChange}
                 />
-                <button className="btn btn-outline-secondary" onClick={handleFileUpload} type="button" id="inputGroupFileAddon">
-                    Enviar
+                <button className="btn btn-outline-secondary" onClick={handleFileUpload} type="button" id="inputGroupFileAddon04">
+                    Importar
                 </button>
             </div>
         </div>

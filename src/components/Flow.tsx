@@ -3,35 +3,46 @@ import {
     ReactFlow,
     Node,
 } from '@xyflow/react';
-import { useDiagramContext } from '../context/DiagramContext.tsx';
 import {Edge} from "reactflow";
+import {useDiagramContext} from "../context/diagram/DiagramContext.tsx";
+import {getColorBaseKv} from "../utils/getColorBaseKv.ts";
+import '@xyflow/react/dist/style.css';
 
 const Flow = () => {
-    const { diagramData } = useDiagramContext();
+    const {diagramData} = useDiagramContext();
 
     const [nodes, setNodes] = useState<Node[]>([]);
     const [edges, setEdges] = useState<Edge[]>([]);
 
     useEffect(() => {
-        const newNodes = diagramData.components.map((comp) => ({
-            id: comp.id,
-            data: {label: comp.data.title},
-            position: comp.position,
-            type: comp.type,
-        }));
+        const newNodes = diagramData.components
+            .filter(comp => comp.hidden === false &&
+                (comp.type === 'bus' || comp.type === 'machine' || comp.type === 'load'))
+            .map((comp) => ({
+                id: comp.id,
+                data: {label: comp.data.title},
+                position: comp.position,
+                type: comp.type,
+                style: {background: comp.data.kv != null ? getColorBaseKv(comp.data.kv) : 'white'},
+            }));
+        console.log(newNodes);
         setNodes(newNodes);
 
-        const newEdges = diagramData.connections.map((con) => ({
-            id: con.id,
-            label: con.data.label,
-            source: con.source,
-            target: con.target,
-        }))
+        const newEdges = diagramData.connections
+            .filter(con =>
+                newNodes.some(node => node.id === con.source) &&
+                newNodes.some(node => node.id === con.target))
+            .map((con) => ({
+                id: con.id,
+                label: con.data.label,
+                source: con.source,
+                target: con.target,
+            }))
         setEdges(newEdges);
 
     }, [diagramData, setNodes, setEdges]);
 
-    return <ReactFlow nodes={nodes} edges={edges} fitView />;
+    return <ReactFlow nodes={nodes} edges={edges} fitView/>;
 };
 
 export default Flow;

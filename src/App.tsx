@@ -4,26 +4,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Flow from "./components/Flow.tsx";
 import Input from "./components/Input.tsx";
-import { DiagramProvider } from "./context/DiagramContext.tsx";
-import { ReactFlowProvider } from 'reactflow';
+import {DiagramProvider} from "./context/diagram/DiagramProvider.tsx";
 
 function App() {
     return (
-        <div className="container-fluid">
+        <div className="">
             <DiagramProvider>
-                <ReactFlowProvider>
-                    <header>
-                        <h3>Diagrama Unifiliar</h3>
-                        <div className="w-100 bg-light" style={{ height: 150 }}>
-                            <Input />
-                        </div>
-                    </header>
-                    <main>
-                        <div className="w-100 bg-body-tertiary" style={{ height: 500 }}>
-                            <Flow />
-                        </div>
-                    </main>
-                </ReactFlowProvider>
+                <h1 className="display-6">Diagrama Unifiliar</h1>
+                <hr></hr>
+                <div className="mt-3 mb-3">
+                    <Input />
+                </div>
+                <div style={{ height: 500 }}>
+                    <Flow />
+                </div>
             </DiagramProvider>
         </div>
     );
