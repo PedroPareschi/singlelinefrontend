@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {
     ReactFlow,
-    Node,
+    Node as FlowNode,
 } from '@xyflow/react';
 import {Edge} from "reactflow";
 import {useDiagramContext} from "../context/diagram/DiagramContext.tsx";
@@ -12,7 +12,7 @@ import DiagramDownload from "./DiagramDownload.tsx";
 const DiagramFlow = () => {
     const {diagramData} = useDiagramContext();
 
-    const [nodes, setNodes] = useState<Node[]>([]);
+    const [nodes, setNodes] = useState<FlowNode[]>([]);
     const [edges, setEdges] = useState<Edge[]>([]);
 
     useEffect(() => {

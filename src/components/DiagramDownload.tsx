@@ -1,5 +1,5 @@
 import axios from "axios";
-import {Edge} from "reactflow";
+import {Node, Edge} from '@xyflow/react';
 
 const DiagramDownload = ({nodes, edges}: { nodes: Node[], edges: Edge[] }) => {
     const data = {nodes, edges};
