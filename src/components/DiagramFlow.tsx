@@ -1,9 +1,5 @@
 import {useEffect, useState} from 'react';
-import {
-    ReactFlow,
-    Node as FlowNode,
-} from '@xyflow/react';
-import {Edge} from "reactflow";
+import {ReactFlow, Node, Edge} from '@xyflow/react';
 import {useDiagramContext} from "../context/diagram/DiagramContext.tsx";
 import {getColorBaseKv} from "../utils/getColorBaseKv.ts";
 import '@xyflow/react/dist/style.css';
@@ -12,7 +8,7 @@ import DiagramDownload from "./DiagramDownload.tsx";
 const DiagramFlow = () => {
     const {diagramData} = useDiagramContext();
 
-    const [nodes, setNodes] = useState<FlowNode[]>([]);
+    const [nodes, setNodes] = useState<Node[]>([]);
     const [edges, setEdges] = useState<Edge[]>([]);
 
     useEffect(() => {
